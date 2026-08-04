@@ -25,7 +25,7 @@ Treat the ultimate objective as the primary constraint. Challenge incomplete or 
 Create and maintain the durable project documentation, identify material decisions, and prepare the first validated implementation milestone.
 ```
 
-Claude should inspect real project sources, improve the project definition, raise only material decisions, create the durable documentation, and establish an implementation roadmap.
+Claude should inspect real project sources, improve the project definition, raise only material decisions, create durable documentation, and establish an implementation roadmap.
 
 ## Recommended workflow
 
@@ -44,7 +44,7 @@ Review material recommendations and decisions
         ↓
 Implement milestone by milestone
         ↓
-Run full-spectrum validation at major gates
+Run milestone and full-spectrum validation gates
 ```
 
 ## Install into a project
@@ -68,9 +68,11 @@ For an existing project, perform this on a separate branch. Claude must reconcil
 - Applicability-first assessment across product, users, operations, technology, data, AI, security, privacy, integrations, hardware, reliability, testing, deployment, support, and lifecycle
 - Complete human-workflow assessment when applicable
 - Capability-based model selection
-- Specialist Claude Code subagents
+- Required milestone review using four independent core reviewers
+- Additional specialist reviewers selected according to project risk
 - Adversarial verification of Critical and High findings
 - Full-spectrum multi-agent validation using actual code and documentation
+- State-of-the-art comparison where relevant
 - Required synthesis into Revise, Implement, Re-engineer, Fix, and UI/UX
 - Prioritized baseline and recommended roadmaps when scope changes are advised
 - Scoped Claude Code rules and reusable implementation skills
@@ -86,8 +88,14 @@ For an existing project, perform this on a separate branch. Claude must reconcil
 │   ├── CLAUDE.md
 │   ├── .claude/
 │   │   ├── agents/
+│   │   │   ├── product-architect.md
+│   │   │   ├── ai-orchestration-reviewer.md
+│   │   │   ├── ux-office-reviewer.md
+│   │   │   ├── qa-security-reviewer.md
+│   │   │   └── adversarial-verifier.md
 │   │   ├── rules/
 │   │   ├── skills/
+│   │   │   ├── review-orchestrator/
 │   │   │   └── full-spectrum-validation/
 │   │   └── settings.example.json
 │   └── docs/
@@ -139,6 +147,19 @@ Claude maintains:
 
 This prevents later prompts from erasing earlier commitments or diverting the project without an explicit decision.
 
+## Required milestone review
+
+Before major milestone completion, architecture or schema changes, high-risk migrations, security-sensitive work, operating-model changes, or production release, Claude invokes:
+
+1. `product-architect`
+2. `ai-orchestration-reviewer`
+3. `ux-office-reviewer`
+4. `qa-security-reviewer`
+
+Each reviewer inspects actual code and project artifacts independently. A reviewer may mark concerns non-applicable only after enough inspection to justify that conclusion. Further specialists are added when needed.
+
+Every Critical and High finding is independently challenged by `adversarial-verifier`. Confirmed Critical and High findings must be resolved before the gate passes, except a confirmed High may be deferred only through explicit user risk acceptance with documented mitigation and a review trigger.
+
 ## Full-spectrum validation
 
 Use the `full-spectrum-validation` skill when:
@@ -150,7 +171,7 @@ Use the `full-spectrum-validation` skill when:
 - repeated failures suggest a systemic problem
 - comprehensive validation is explicitly requested
 
-Every relevant reviewer reads actual project files and evidence. Critical and High findings are challenged by an independent adversarial verifier before acceptance.
+The assessment covers all applicable project dimensions, compares credible state-of-the-art alternatives, and requires primary-source inspection rather than coordinator summaries.
 
 The final assessment must produce:
 
@@ -160,7 +181,7 @@ The final assessment must produce:
 4. Fix
 5. UI/UX
 
-It also produces priorities, dependencies, acceptance criteria, validation methods, and a phased roadmap. When scope changes are advised, it can provide both a baseline roadmap and a recommended objective-first roadmap.
+It also produces priorities, dependencies, acceptance criteria, validation methods, and a phased roadmap. When scope changes are advised, it provides both a baseline roadmap and a recommended objective-first roadmap.
 
 ## Model routing
 
