@@ -160,17 +160,41 @@ Before a substantial structural change:
 
 Use multiple independent agents when specialist expertise, adversarial challenge, parallel investigation, or context isolation materially improves quality. Do not summon a large panel for routine low-risk work.
 
-Choose the smallest useful set of reviewers. Available roles may include product, domain, architecture, data, AI, security, privacy, reliability, performance, UX, operations, QA, integration, compliance, implementation feasibility, and adversarial verification.
+For routine bounded work, choose the smallest useful set of agents. For major milestone and full-spectrum validation, always invoke the four required core reviewers defined below, then add the smallest additional specialist set needed for complete coverage.
+
+Available specialist perspectives may include product, domain, architecture, data, AI, security, privacy, reliability, performance, UX, operations, QA, integration, compliance, implementation feasibility, and adversarial verification.
 
 Choose model capability based on difficulty, risk, privacy, cost, latency, and evidence needs:
 
-- strongest reasoning capability for architecture, difficult debugging, security-sensitive work, migrations, high-risk decisions, and critical synthesis
+- strongest reasoning capability for architecture, difficult debugging, security-sensitive work, migrations, high-risk decisions, adversarial verification, and critical synthesis
 - balanced coding capability for implementation, tests, APIs, UI, and normal refactoring
 - efficient capability for search, classification, formatting, mechanical edits, and summaries
 
 Escalate when confidence is low, evidence conflicts, validation repeatedly fails, or risk is material. Never reduce testing or safety because a cheaper model was selected.
 
-## 9. Full-spectrum multi-agent validation
+## 9. Mandatory milestone review gate
+
+Run a milestone review before completing a major milestone, major feature, architecture or schema change, operating-model change, high-risk migration, security-sensitive change, or production release.
+
+Always invoke these four independent core reviewers:
+
+1. `product-architect`
+2. `ai-orchestration-reviewer`
+3. `ux-office-reviewer`
+4. `qa-security-reviewer`
+
+Each core reviewer must inspect actual project sources. A reviewer may mark part of its domain non-applicable only after enough inspection to justify that conclusion. Add specialists when further domain depth is required.
+
+Every Critical and High finding must be independently challenged by `adversarial-verifier` or an equally qualified independent reviewer.
+
+- Resolve all confirmed Critical findings before the milestone can pass.
+- Resolve all confirmed High findings before the milestone can pass unless the user explicitly accepts the risk and the decision, rationale, owner, mitigation, and review trigger are documented.
+- Rerun affected checks and focused verification after remediation.
+- Confirm no regression was introduced.
+- Update requirements, architecture, decisions, status, TODOs, deferred actions, risks, and current task as applicable.
+- Continue only when the milestone gate passes.
+
+## 10. Full-spectrum multi-agent validation
 
 Run full-spectrum validation when:
 
@@ -183,7 +207,9 @@ Run full-spectrum validation when:
 
 This is not a routine code review. Its purpose is to determine whether the complete project is the strongest practical way to achieve its ultimate objective.
 
-### Primary-source requirement
+### Required panel and primary sources
+
+Always invoke the four core reviewers from the milestone gate and add all necessary specialists.
 
 Each participating agent must inspect the actual materials relevant to its review, including source code, tests, configuration, schemas, migrations, infrastructure, requirements, architecture, decisions, UI implementation, operational procedures, logs, metrics, and evaluation results when available.
 
@@ -249,11 +275,16 @@ Severity and delivery priority are related but not identical.
 
 Produce a phased roadmap containing sequence, category, priority, evidence, expected outcome, dependencies, relative effort, risks, acceptance criteria, validation method, documentation updates, and responsible role or workstream when relevant.
 
+For material scope changes, provide both:
+
+- **Baseline roadmap:** best path within approved scope
+- **Recommended roadmap:** preferred path after justified scope or requirement changes
+
 Do not begin broad implementation automatically. Identify actions that can proceed safely, decisions requiring approval, and items requiring more evidence.
 
-Validation is complete only when all relevant dimensions were assessed or marked non-applicable, agents inspected primary sources, Critical and High findings were adversarially verified, conflicts were resolved, actions were categorized and prioritized, a phased roadmap was produced, and durable documentation was updated.
+Validation is complete only when all relevant dimensions were assessed or marked non-applicable, core and specialist agents inspected primary sources, Critical and High findings were adversarially verified, conflicts were resolved, actions were categorized and prioritized, a phased roadmap was produced, and durable documentation was updated.
 
-## 10. Validation and definition of done
+## 11. Validation and definition of done
 
 Select validation according to the change, including where applicable unit, integration, end-to-end, regression, contract, security, dependency, migration, rollback, performance, resilience, accessibility, workflow, concurrency, recovery, data-integrity, and AI-evaluation checks.
 
@@ -264,7 +295,8 @@ Work is complete only when:
 - objective and acceptance criteria are satisfied
 - relevant tests and checks pass
 - the final diff was reviewed
-- Critical and High findings are resolved, accepted with documented reasoning, or clearly deferred
+- confirmed Critical findings are resolved
+- confirmed High findings are resolved or explicitly accepted by the user with documented mitigation and review trigger
 - requirements, architecture, status, TODOs, decisions, deferred actions, and risks are current
 - known limitations and validation gaps are recorded
 - operational readiness is addressed when applicable
