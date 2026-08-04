@@ -1,6 +1,6 @@
 # Project Brief
 
-Edit this file for each new project. Describe the desired outcome rather than prescribing the implementation unless a constraint is genuinely mandatory.
+Edit this file for each project. Describe the desired outcome, not a predetermined implementation, unless a constraint is genuinely mandatory.
 
 ## Ultimate objective
 
@@ -16,23 +16,23 @@ Edit this file for each new project. Describe the desired outcome rather than pr
 
 ## Success definition
 
-[How will we know the project succeeded? Include measurable outcomes where possible.]
+[How will success be measured? Include observable or measurable outcomes where possible.]
 
 ## Initial idea or direction
 
-[Describe the current product idea, workflows, capabilities, or preferred direction. Treat this as a starting proposal that Claude may challenge.]
+[Describe the current concept, workflows, capabilities, or preferred direction. Claude may challenge this when a better route serves the objective.]
 
 ## Mandatory constraints
 
-[List only constraints that truly cannot change, such as legal, budget, deadline, policy, platform, data-residency, or hardware restrictions.]
+[List only constraints that truly cannot change, such as law, policy, budget, deadline, data residency, platform, or hardware.]
 
 ## Non-goals
 
-[List outcomes intentionally excluded at this stage, if any. Claude may still recommend revisiting them when evidence shows they materially affect the ultimate objective.]
+[List intentional exclusions. Claude may recommend revisiting them when evidence shows they materially affect the objective.]
 
 ## Known context and evidence
 
-[Provide research, existing systems, user feedback, data, links, prior decisions, or lessons that should inform the project.]
+[Add research, user feedback, current systems, data, links, prior decisions, or lessons.]
 
 ## Known risks or concerns
 
@@ -40,4 +40,4 @@ Edit this file for each new project. Describe the desired outcome rather than pr
 
 ## Decisions reserved for the user
 
-[List major decisions Claude must recommend but not make silently, if any.]
+[List major decisions Claude should recommend but not make silently.]

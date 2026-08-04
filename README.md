@@ -1,179 +1,84 @@
-# Claude Code Project Skeleton
+# Claude Code Reusable Project Skeleton
 
-A reusable, project-agnostic Claude Code framework for building projects with objective-first reasoning, durable context, disciplined execution, specialist subagents, and full-spectrum validation.
+A project-agnostic Claude Code template for objective-first planning, durable project memory, dynamic multi-agent review, evidence-based validation, and milestone delivery.
 
-The template is intentionally technology-neutral. It does not assume a language, framework, cloud, architecture, operating model, or fixed model name.
+The repository itself is the template. Create a new repository from it, edit one file, and start Claude Code at the root. There is no nested `project/` directory to copy.
 
-## Start here
+## Start a new project
 
-For a new project, edit only:
-
-```text
-PROJECT_BRIEF.md
-```
-
-Describe the ultimate outcome, intended users, product idea, success definition, and mandatory constraints. Requirements are allowed to evolve when Claude identifies a materially better way to achieve the objective.
-
-Then open the repository in Claude Code and use:
+1. Use this repository as a GitHub template or clone it.
+2. Edit `PROJECT_BRIEF.md`.
+3. Start Claude Code in the repository root.
+4. Run:
 
 ```text
-Read PROJECT_BRIEF.md and the Claude Code framework under project/.
-Inspect the repository and bootstrap this project.
-
-Treat the ultimate objective as the primary constraint. Challenge incomplete or weak requirements and recommend justified scope, requirement, workflow, architecture, data, AI, security, operational, or UI/UX changes when they materially improve the outcome.
-
-Create and maintain the durable project documentation, identify material decisions, and prepare the first validated implementation milestone.
+/bootstrap-project
 ```
 
-Claude should inspect real project sources, improve the project definition, raise only material decisions, create durable documentation, and establish an implementation roadmap.
+The bootstrap workflow inspects the actual repository, challenges weak assumptions, establishes only useful durable documentation, and proposes the first validated milestone without implementing product features.
 
-## Recommended workflow
+## Add to an existing project
 
-```text
-Fork or copy repository
-        ↓
-Edit PROJECT_BRIEF.md
-        ↓
-Copy project/ contents into the project root
-        ↓
-Open in Claude Code
-        ↓
-Run the bootstrap instruction
-        ↓
-Review material recommendations and decisions
-        ↓
-Implement milestone by milestone
-        ↓
-Run milestone and full-spectrum validation gates
-```
-
-## Install into a project
-
-From the target project root, copy:
+Use a separate branch, then run:
 
 ```bash
-cp path-to-skeleton/project/CLAUDE.md ./CLAUDE.md
-cp -R path-to-skeleton/project/.claude ./.claude
-cp -R path-to-skeleton/project/docs ./docs
-cp path-to-skeleton/PROJECT_BRIEF.md ./PROJECT_BRIEF.md
+/path/to/claude_skeleton/scripts/install-into-project.sh /path/to/existing-project
 ```
 
-For an existing project, perform this on a separate branch. Claude must reconcile the framework with existing instructions and documentation rather than overwrite useful project knowledge.
+The installer never overwrites existing framework files. When conflicts exist, it places the incoming framework under `.claude-skeleton-incoming/` for deliberate reconciliation.
 
-## What the template provides
+## Philosophy
 
-- A concise Claude Code entry point in `CLAUDE.md`
-- A comprehensive objective-first execution standard
-- Persistent project status, TODO, deferred-action, decision, and risk tracking
-- Applicability-first assessment across product, users, operations, technology, data, AI, security, privacy, integrations, hardware, reliability, testing, deployment, support, and lifecycle
-- Complete human-workflow assessment when applicable
-- Capability-based model selection
-- Required milestone review using four independent core reviewers
-- Additional specialist reviewers selected according to project risk
-- Adversarial verification of Critical and High findings
-- Full-spectrum multi-agent validation using actual code and documentation
-- State-of-the-art comparison where relevant
-- Required synthesis into Revise, Implement, Re-engineer, Fix, and UI/UX
-- Prioritized baseline and recommended roadmaps when scope changes are advised
-- Scoped Claude Code rules and reusable implementation skills
+- The ultimate objective outranks the current implementation plan.
+- Claude may recommend preserving, revising, expanding, reducing, replacing, or deferring requirements and scope.
+- Major direction changes require explicit presentation and approval rather than silent implementation.
+- Project mechanisms are applicability-first. Queues, shifts, review stages, AI, hardware, or enterprise controls are introduced only when the operating model needs them.
+- Important project memory lives in the repository, not only chat history.
+- Failed required validation blocks dependent work.
+- Agents and models are selected dynamically from project needs, not a fixed roster.
 
-## Repository structure
+## Dynamic agent orchestration
 
-```text
-.
-├── PROJECT_BRIEF.md
-├── global/
-│   └── CLAUDE.md
-├── project/
-│   ├── CLAUDE.md
-│   ├── .claude/
-│   │   ├── agents/
-│   │   │   ├── product-architect.md
-│   │   │   ├── ai-orchestration-reviewer.md
-│   │   │   ├── ux-office-reviewer.md
-│   │   │   ├── qa-security-reviewer.md
-│   │   │   └── adversarial-verifier.md
-│   │   ├── rules/
-│   │   ├── skills/
-│   │   │   ├── review-orchestrator/
-│   │   │   └── full-spectrum-validation/
-│   │   └── settings.example.json
-│   └── docs/
-│       ├── PROJECT_EXECUTION_STANDARD.md
-│       ├── requirements.md
-│       ├── architecture.md
-│       ├── decisions.md
-│       ├── current-task.md
-│       ├── status.md
-│       ├── todo.md
-│       ├── deferred-actions.md
-│       └── risks.md
-├── examples/
-├── CONTRIBUTING.md
-├── SECURITY.md
-├── CODE_OF_CONDUCT.md
-└── LICENSE
-```
+This template intentionally includes only two reusable agent contracts:
 
-## Core philosophy
+- `specialist-reviewer`: adopts any domain assigned by the orchestrator and inspects primary evidence.
+- `adversarial-verifier`: independently challenges serious findings.
 
-The ultimate objective outranks the current implementation plan. Claude is expected to act as a project adviser, not only a coding assistant.
+These are not a limit. Claude may use built-in agents, run multiple specialist reviewers with different assignments, define temporary session agents, create additional recurring project agents, or use agent teams when available and justified.
 
-It may recommend that scope or requirements be:
+The review panel has no fixed names or maximum. Routine work uses the smallest complete set; high-risk and full-spectrum reviews may use as many independent perspectives as needed.
 
-- preserved
-- revised
-- expanded
-- reduced
-- replaced
-- deferred
+## Workflows
 
-Major direction changes are recommendations requiring approval. Claude should not silently rewrite the project, but it must not hide better options merely because they fall outside the current scope.
+| Command | Purpose |
+|---|---|
+| `/bootstrap-project` | Establish or refresh the project foundation |
+| `/plan-milestone` | Define a verifiable milestone and review strategy |
+| `/review-milestone` | Run a dynamic independent panel and enforce the gate |
+| `/full-spectrum-validation` | Challenge the whole project and produce a prioritized roadmap |
+| `/finish-milestone` | Verify completion and preserve durable context |
 
 ## Durable project memory
 
-Important context must not live only in chat history.
+The default documents are:
 
-Claude maintains:
+- `PROJECT_BRIEF.md`: user-edited objective and context
+- `docs/requirements.md`: behavior, actors, operating model, acceptance criteria, and open decisions
+- `docs/architecture.md`: boundaries, components, data, integrations, deployment, operations, and trade-offs
+- `docs/plan.md`: milestones, tasks, dependencies, validation, blockers, and plan changes
+- `docs/status.md`: concise current snapshot and next action
+- `docs/decisions.md`: durable decision records and revisit triggers
+- `docs/todo.md`: unfinished work
+- `docs/deferred-actions.md`: work intentionally postponed and reconsideration triggers
+- `docs/risks.md`: verified risks, issues, hypotheses, and validation gaps
 
-- current milestone and next action
-- prioritized TODOs
-- deferred actions and reconsideration triggers
-- decisions and alternatives
-- risks and evidence gaps
-- requirements and acceptance criteria
-- architecture and trade-offs
-- actual validation performed
+Claude should consolidate or add focused documents according to project complexity. Empty ceremonial documents and duplicate sources of truth are discouraged.
 
-This prevents later prompts from erasing earlier commitments or diverting the project without an explicit decision.
+## Full-spectrum validation output
 
-## Required milestone review
+A comprehensive validation derives its panel from the project, requires reviewers to inspect actual code and documentation, compares credible state-of-the-art alternatives where relevant, and independently challenges Critical and High findings.
 
-Before major milestone completion, architecture or schema changes, high-risk migrations, security-sensitive work, operating-model changes, or production release, Claude invokes:
-
-1. `product-architect`
-2. `ai-orchestration-reviewer`
-3. `ux-office-reviewer`
-4. `qa-security-reviewer`
-
-Each reviewer inspects actual code and project artifacts independently. A reviewer may mark concerns non-applicable only after enough inspection to justify that conclusion. Further specialists are added when needed.
-
-Every Critical and High finding is independently challenged by `adversarial-verifier`. Confirmed Critical and High findings must be resolved before the gate passes, except a confirmed High may be deferred only through explicit user risk acceptance with documented mitigation and a review trigger.
-
-## Full-spectrum validation
-
-Use the `full-spectrum-validation` skill when:
-
-- starting or substantially redefining a project
-- completing a major milestone
-- changing architecture, data, workflow, or operating model
-- preparing for production or a major release
-- repeated failures suggest a systemic problem
-- comprehensive validation is explicitly requested
-
-The assessment covers all applicable project dimensions, compares credible state-of-the-art alternatives, and requires primary-source inspection rather than coordinator summaries.
-
-The final assessment must produce:
+Accepted actions are synthesized into exactly:
 
 1. Revise
 2. Implement
@@ -181,37 +86,27 @@ The final assessment must produce:
 4. Fix
 5. UI/UX
 
-It also produces priorities, dependencies, acceptance criteria, validation methods, and a phased roadmap. When scope changes are advised, it provides both a baseline roadmap and a recommended objective-first roadmap.
+Actions receive P0-P3 priority and a phased roadmap. Material scope changes include both a baseline roadmap and the recommended objective-first roadmap.
 
-## Model routing
+## Safety and permissions
 
-The framework chooses capability by task rather than hardcoding model names:
+`.claude/settings.json` contains only conservative shared deny rules for common secrets. It deliberately avoids broad command allowances and active hooks because safe commands, build tools, and formatting differ by project.
 
-- strongest reasoning capability for architecture, difficult debugging, security-sensitive work, migrations, adversarial verification, and synthesis
-- balanced coding capability for normal implementation, tests, APIs, UI, and refactoring
-- efficient capability for search, classification, formatting, mechanical edits, and summaries
+After bootstrap, review permissions with `/permissions`. Add deterministic hooks only after the stack and commands are known. Keep personal settings in `.claude/settings.local.json` or user-level Claude configuration.
 
-Quality, testing, security, and evidence requirements are never reduced merely to save model cost.
+## Validate the skeleton
 
-## Global preferences
-
-Optionally merge `global/CLAUDE.md` into:
+Run:
 
 ```bash
-~/.claude/CLAUDE.md
+./scripts/validate-template.sh
 ```
 
-Project-specific objectives, commands, architecture, and decisions should remain inside the repository.
+CI runs the same check. For behavioral testing, follow `docs/TEMPLATE_ACCEPTANCE_TEST.md`.
 
-## Verify instructions
+## Why this structure
 
-In Claude Code, use:
-
-```text
-/memory
-```
-
-Use `/model` to inspect models available to your account.
+Anthropic recommends a concise `CLAUDE.md`, modular rules for persistent instructions, skills for repeatable procedures, project settings under `.claude/settings.json`, and custom subagents only when a repeated specialist configuration provides value. This template follows that separation so routine sessions remain lean while deep workflows are available on demand.
 
 ## License
 

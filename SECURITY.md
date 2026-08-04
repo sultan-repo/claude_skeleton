@@ -1,20 +1,7 @@
 # Security Policy
 
-## Reporting a vulnerability
+Report vulnerabilities through GitHub private security reporting when available. Do not disclose secrets, private code, credentials, customer data, or exploitable details publicly.
 
-Please do not disclose security issues publicly before maintainers have had a reasonable opportunity to review them.
+This repository supplies instructions and configuration templates. Review permissions, hooks, MCP servers, plugins, commands, model providers, and data-handling requirements before using them with sensitive projects.
 
-Report vulnerabilities through the repository's private security reporting feature when available.
-
-Include:
-
-- affected file or rule
-- risk and possible impact
-- reproduction steps
-- suggested mitigation, if known
-
-## Scope
-
-This repository contains configuration and documentation templates. Users are responsible for reviewing all permissions, hooks, commands, and model instructions before applying them to production repositories.
-
-Never commit secrets, credentials, tokens, private keys, customer data, or proprietary source code to this template.
+The shared settings intentionally avoid broad command allowances. Organization-managed policies and project-specific security requirements take precedence.
