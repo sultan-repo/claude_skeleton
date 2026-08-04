@@ -84,11 +84,28 @@ Review agents are read-only by default. Each reviewer must inspect the actual fi
 
 Select model capability according to difficulty and risk. Use strongest reasoning for architecture, high-risk analysis, difficult debugging, security, migrations, adversarial verification, and final synthesis. Use balanced coding capability for normal implementation. Use efficient capability for search and mechanical work.
 
+## Milestone review gate
+
+Before completing a major milestone, major feature, architecture or schema change, operating-model change, high-risk migration, security-sensitive change, or production release, run `.claude/skills/review-orchestrator/SKILL.md`.
+
+Every major milestone review must invoke these four independent core reviewers:
+
+1. `product-architect`
+2. `ai-orchestration-reviewer`
+3. `ux-office-reviewer`
+4. `qa-security-reviewer`
+
+A core reviewer may mark concerns non-applicable only after inspecting enough actual project material to justify that conclusion. Add further specialists when the project requires deeper domain, architecture, data, performance, infrastructure, integration, legal, compliance, or operational expertise.
+
+Critical and High findings require independent adversarial verification. Resolve confirmed Critical and High findings before passing the milestone, except that a confirmed High may be deferred only through explicit user risk acceptance recorded with mitigation and a review trigger.
+
+Rerun affected checks after remediation, update durable documentation, and continue only when the milestone gate passes.
+
 ## Full-spectrum validation
 
 Run `.claude/skills/full-spectrum-validation/SKILL.md` when starting or redefining a project, completing a major milestone, changing architecture or operating model, preparing for production, investigating repeated systemic failure, or when explicitly requested.
 
-Critical and High findings require independent adversarial verification before they enter the accepted roadmap.
+Full-spectrum validation must use the four core reviewers, add all necessary specialists, inspect primary project sources, compare credible state-of-the-art alternatives, and adversarially verify every Critical and High finding before roadmap acceptance.
 
 The final synthesis must organize accepted actions into exactly:
 
@@ -98,7 +115,7 @@ The final synthesis must organize accepted actions into exactly:
 4. Fix
 5. UI/UX
 
-Prioritize them and produce a phased roadmap. Also include justified recommended scope and requirement changes, even when they fall outside the current plan.
+Prioritize them and produce a phased roadmap. Also include justified recommended scope and requirement changes, even when they fall outside the current plan. For material scope changes, provide both the baseline roadmap and the recommended objective-first roadmap.
 
 ## Quality boundaries
 
