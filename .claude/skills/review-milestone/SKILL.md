@@ -1,7 +1,6 @@
 ---
 name: review-milestone
 description: Run an independent risk-based milestone review, verify serious findings, enforce remediation, and decide whether the gate passes.
-disable-model-invocation: true
 allowed-tools: Read Grep Glob Bash Write Edit Agent AskUserQuestion
 ---
 

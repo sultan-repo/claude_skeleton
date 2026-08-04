@@ -1,7 +1,6 @@
 ---
 name: finish-milestone
 description: Verify milestone completion, preserve durable project memory, and state the next logical action.
-disable-model-invocation: true
 allowed-tools: Read Grep Glob Bash Write Edit Agent AskUserQuestion
 ---
 

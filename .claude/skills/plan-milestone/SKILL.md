@@ -1,7 +1,6 @@
 ---
 name: plan-milestone
 description: Plan a coherent milestone with objective alignment, dependencies, acceptance criteria, validation, risk, and review strategy.
-disable-model-invocation: true
 allowed-tools: Read Grep Glob Bash Write Edit Agent AskUserQuestion
 ---
 

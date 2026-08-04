@@ -1,7 +1,6 @@
 ---
 name: full-spectrum-validation
 description: Run comprehensive objective-first multi-agent validation using primary-source inspection, state-of-the-art comparison, adversarial verification, and a prioritized roadmap.
-disable-model-invocation: true
 allowed-tools: Read Grep Glob Bash Write Edit Agent AskUserQuestion WebSearch WebFetch
 ---
 

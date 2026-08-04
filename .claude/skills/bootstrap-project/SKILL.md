@@ -1,7 +1,6 @@
 ---
 name: bootstrap-project
 description: Establish or refresh the project foundation from the brief and actual repository without implementing product features.
-disable-model-invocation: true
 allowed-tools: Read Grep Glob Bash Write Edit Agent AskUserQuestion
 ---
 

@@ -45,8 +45,9 @@ while IFS= read -r imported; do
   [[ -f "$imported" ]] || fail "Broken CLAUDE.md import: $imported"
 done < <(grep -oE '@[A-Za-z0-9_./~-]+\.md' CLAUDE.md | sed 's/^@//' || true)
 
-mapfile -t names < <(awk '/^name: / {print $2}' .claude/agents/*.md)
-[[ "${#names[@]}" -eq "$(printf '%s\n' "${names[@]}" | sort -u | wc -l | tr -d ' ')" ]] || fail "Duplicate agent name"
+agent_count="$(awk '/^name: / {print $2}' .claude/agents/*.md | wc -l | tr -d ' ')"
+unique_agent_count="$(awk '/^name: / {print $2}' .claude/agents/*.md | sort -u | wc -l | tr -d ' ')"
+[[ "$agent_count" -eq "$unique_agent_count" ]] || fail "Duplicate agent name"
 
 for skill in .claude/skills/*/SKILL.md; do
   grep -q '^description:' "$skill" || fail "Skill missing description: $skill"
