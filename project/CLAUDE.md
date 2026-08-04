@@ -12,7 +12,7 @@
 Read and follow:
 
 - @docs/PROJECT_EXECUTION_STANDARD.md
-- @../PROJECT_BRIEF.md
+- @PROJECT_BRIEF.md
 - @docs/requirements.md
 - @docs/architecture.md
 - @docs/decisions.md
