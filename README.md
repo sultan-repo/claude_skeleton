@@ -1,186 +1,196 @@
-# Claude Code Project Template
+# Claude Code Project Skeleton
 
-A reusable, project-agnostic template for configuring Claude Code with clear instructions, scoped rules, reusable skills, and token-efficient workflows.
+A reusable, project-agnostic Claude Code framework for building projects with objective-first reasoning, durable context, disciplined execution, specialist subagents, and full-spectrum validation.
 
-This repository is designed to work for software projects of any size or technology stack. It does not assume a specific language, framework, architecture, or model name.
+The template is intentionally technology-neutral. It does not assume a language, framework, cloud, architecture, operating model, or fixed model name.
 
-## Start Here
+## Start here
 
-For most projects, edit only:
+For a new project, edit only:
 
 ```text
 PROJECT_BRIEF.md
 ```
 
-Add your objective, product idea, and mandatory constraints.
+Describe the ultimate outcome, intended users, product idea, success definition, and mandatory constraints. Requirements are allowed to evolve when Claude identifies a materially better way to achieve the objective.
 
-Then open the repository in Claude Code and paste:
+Then open the repository in Claude Code and use:
 
 ```text
-Read `PROJECT_BRIEF.md`, inspect the repository, and bootstrap the project using the existing Claude Code framework.
+Read PROJECT_BRIEF.md and the Claude Code framework under project/.
+Inspect the repository and bootstrap this project.
 
-Improve weak or incomplete requirements when a better approach supports the objective.
+Treat the ultimate objective as the primary constraint. Challenge incomplete or weak requirements and recommend justified scope, requirement, workflow, architecture, data, AI, security, operational, or UI/UX changes when they materially improve the outcome.
 
-Ask me only about material decisions that could significantly affect scope, behavior, architecture, APIs, data, security, dependencies, or deployment.
-
-Proceed autonomously with low-risk and reversible decisions.
+Create and maintain the durable project documentation, identify material decisions, and prepare the first validated implementation milestone.
 ```
 
-Claude should then improve the project definition, identify only material questions, and adapt the requirements, architecture, instructions, rules, skills, agents, and optional hooks to the actual project.
+Claude should inspect real project sources, improve the project definition, raise only material decisions, create the durable documentation, and establish an implementation roadmap.
 
-### Workflow
+## Recommended workflow
 
 ```text
 Fork or copy repository
         ↓
 Edit PROJECT_BRIEF.md
         ↓
+Copy project/ contents into the project root
+        ↓
 Open in Claude Code
         ↓
-Paste the bootstrap instruction
+Run the bootstrap instruction
         ↓
-Review material questions
+Review material recommendations and decisions
         ↓
-Begin implementation
+Implement milestone by milestone
+        ↓
+Run full-spectrum validation at major gates
 ```
 
-### Existing projects
+## Install into a project
 
-Copy the framework into a separate branch of the existing project, add `PROJECT_BRIEF.md`, and use the same bootstrap instruction.
+From the target project root, copy:
 
-Claude must merge with existing instructions and documentation rather than overwrite them.
+```bash
+cp path-to-skeleton/project/CLAUDE.md ./CLAUDE.md
+cp -R path-to-skeleton/project/.claude ./.claude
+cp -R path-to-skeleton/project/docs ./docs
+cp path-to-skeleton/PROJECT_BRIEF.md ./PROJECT_BRIEF.md
+```
 
-## What this template includes
+For an existing project, perform this on a separate branch. Claude must reconcile the framework with existing instructions and documentation rather than overwrite useful project knowledge.
 
-- Global Claude Code preferences
-- Project-level `CLAUDE.md`
-- Scoped rules for common engineering areas
-- Reusable skills for architecture, implementation, debugging, review, and task completion
-- Documentation templates for requirements, architecture, decisions, and current work
-- Example permission settings
-- Public repository files including license, contribution guide, security policy, and code of conduct
+## What the template provides
+
+- A concise Claude Code entry point in `CLAUDE.md`
+- A comprehensive objective-first execution standard
+- Persistent project status, TODO, deferred-action, decision, and risk tracking
+- Applicability-first assessment across product, users, operations, technology, data, AI, security, privacy, integrations, hardware, reliability, testing, deployment, support, and lifecycle
+- Complete human-workflow assessment when applicable
+- Capability-based model selection
+- Specialist Claude Code subagents
+- Adversarial verification of Critical and High findings
+- Full-spectrum multi-agent validation using actual code and documentation
+- Required synthesis into Revise, Implement, Re-engineer, Fix, and UI/UX
+- Prioritized baseline and recommended roadmaps when scope changes are advised
+- Scoped Claude Code rules and reusable implementation skills
 
 ## Repository structure
 
 ```text
 .
-├── PROJECT_BRIEF.md        # Edit this first
+├── PROJECT_BRIEF.md
 ├── global/
 │   └── CLAUDE.md
 ├── project/
 │   ├── CLAUDE.md
 │   ├── .claude/
+│   │   ├── agents/
 │   │   ├── rules/
 │   │   ├── skills/
+│   │   │   └── full-spectrum-validation/
 │   │   └── settings.example.json
 │   └── docs/
+│       ├── PROJECT_EXECUTION_STANDARD.md
+│       ├── requirements.md
+│       ├── architecture.md
+│       ├── decisions.md
+│       ├── current-task.md
+│       ├── status.md
+│       ├── todo.md
+│       ├── deferred-actions.md
+│       └── risks.md
 ├── examples/
-│   └── calculator/
 ├── CONTRIBUTING.md
 ├── SECURITY.md
 ├── CODE_OF_CONDUCT.md
-├── LICENSE
-└── README.md
+└── LICENSE
 ```
 
-## Quick start
+## Core philosophy
 
-### 1. Use the global preferences
+The ultimate objective outranks the current implementation plan. Claude is expected to act as a project adviser, not only a coding assistant.
 
-Copy the global file to your Claude Code configuration:
+It may recommend that scope or requirements be:
+
+- preserved
+- revised
+- expanded
+- reduced
+- replaced
+- deferred
+
+Major direction changes are recommendations requiring approval. Claude should not silently rewrite the project, but it must not hide better options merely because they fall outside the current scope.
+
+## Durable project memory
+
+Important context must not live only in chat history.
+
+Claude maintains:
+
+- current milestone and next action
+- prioritized TODOs
+- deferred actions and reconsideration triggers
+- decisions and alternatives
+- risks and evidence gaps
+- requirements and acceptance criteria
+- architecture and trade-offs
+- actual validation performed
+
+This prevents later prompts from erasing earlier commitments or diverting the project without an explicit decision.
+
+## Full-spectrum validation
+
+Use the `full-spectrum-validation` skill when:
+
+- starting or substantially redefining a project
+- completing a major milestone
+- changing architecture, data, workflow, or operating model
+- preparing for production or a major release
+- repeated failures suggest a systemic problem
+- comprehensive validation is explicitly requested
+
+Every relevant reviewer reads actual project files and evidence. Critical and High findings are challenged by an independent adversarial verifier before acceptance.
+
+The final assessment must produce:
+
+1. Revise
+2. Implement
+3. Re-engineer
+4. Fix
+5. UI/UX
+
+It also produces priorities, dependencies, acceptance criteria, validation methods, and a phased roadmap. When scope changes are advised, it can provide both a baseline roadmap and a recommended objective-first roadmap.
+
+## Model routing
+
+The framework chooses capability by task rather than hardcoding model names:
+
+- strongest reasoning capability for architecture, difficult debugging, security-sensitive work, migrations, adversarial verification, and synthesis
+- balanced coding capability for normal implementation, tests, APIs, UI, and refactoring
+- efficient capability for search, classification, formatting, mechanical edits, and summaries
+
+Quality, testing, security, and evidence requirements are never reduced merely to save model cost.
+
+## Global preferences
+
+Optionally merge `global/CLAUDE.md` into:
 
 ```bash
-mkdir -p ~/.claude
-cp global/CLAUDE.md ~/.claude/CLAUDE.md
+~/.claude/CLAUDE.md
 ```
 
-If a global file already exists, merge the contents manually.
+Project-specific objectives, commands, architecture, and decisions should remain inside the repository.
 
-### 2. Add the project template
+## Verify instructions
 
-From your project root:
-
-```bash
-cp project/CLAUDE.md ./CLAUDE.md
-cp -R project/.claude ./.claude
-cp -R project/docs ./docs
-```
-
-Then replace the placeholders in:
-
-- `CLAUDE.md`
-- `docs/requirements.md`
-- `docs/architecture.md`
-- `docs/current-task.md`
-
-### 3. Verify loaded instructions
-
-In Claude Code:
+In Claude Code, use:
 
 ```text
 /memory
 ```
 
-Use `/model` to view the models available to your account.
-
-## Where project information belongs
-
-Use `PROJECT_BRIEF.md` for your initial project idea.
-
-Claude then converts it into the appropriate project documentation:
-
-- `PROJECT_BRIEF.md` for the initial objective, idea, and mandatory constraints
-- `CLAUDE.md` for how Claude should work
-- `docs/requirements.md` for approved product behavior and acceptance criteria
-- `docs/architecture.md` for the approved system design
-- `docs/current-task.md` for the active implementation task
-- `docs/decisions.md` or `docs/adr/` for important technical decisions
-
-Do not place detailed feature requirements in `CLAUDE.md`.
-
-## Model routing
-
-This template uses capability-based model routing rather than fixed model names.
-
-Use:
-
-- the strongest reasoning model for architecture, difficult debugging, security-critical work, and major migrations
-- the balanced coding model for normal implementation, tests, APIs, UI work, and refactoring
-- the fastest economical model for repository search, summaries, formatting, and mechanical edits
-
-This keeps the template usable even when model names or account availability change.
-
-
-## Scope alignment
-
-Before implementation, the coding agent confirms what it understood, the functional changes expected, what is out of scope, and assumptions that may affect delivery.
-
-Approval is required when a request is ambiguous or materially changes behavior, architecture, public APIs, schemas, dependencies, deployment, or user workflows.
-
-## Subagent strategy
-
-The primary coding agent owns implementation and integration. Subagents are used only for bounded investigation or independent specialist review. Reviewers are read-only by default, only relevant reviewers are selected, and parallel work is limited to independent concerns.
-
-Critical and High review findings must be resolved or formally deferred before a milestone passes.
-
-## Token-efficiency principles
-
-- Search before reading files.
-- Read only relevant sections.
-- Keep each session focused on one task.
-- Use scoped rules rather than one oversized instruction file.
-- Run targeted tests before full test suites.
-- Avoid generated files, dependencies, build output, and large logs unless required.
-- Prefer minimal diffs over full-file rewrites.
-- Store stable decisions in documentation rather than repeating them in prompts.
-
-## Example
-
-See [`examples/calculator`](examples/calculator) for a minimal example showing where requirements, architecture, and task instructions belong.
-
-## Compatibility
-
-This template is intentionally generic. Review paths, commands, permissions, and workflow rules before using it in a real project.
+Use `/model` to inspect models available to your account.
 
 ## License
 
