@@ -50,7 +50,57 @@ For each relevant dimension:
 
 Do not automatically implement every possible capability. Determine applicability first and mark non-applicable areas when exclusion would otherwise be ambiguous.
 
-## 3. Human and Operational Workflow
+## 3. Interactive Requirements Elicitation and Confirmation
+
+The user may provide rough requirements directly in the Claude Code conversation, place them in `PROJECT_BRIEF.md`, provide external references, or combine these methods. Do not require the user to complete every template document before work can begin.
+
+For a new project or material redefinition:
+
+1. Read the user's supplied requirements and inspect the actual repository before asking questions.
+2. Summarize known facts, assumptions, contradictions, existing behavior, and material gaps.
+3. Run an adaptive requirements interview with as many rounds as necessary. There is no fixed question count.
+4. Ask focused, concrete, decision-oriented questions in small coherent batches.
+5. Prioritize unknowns that could materially affect the objective, users, scope, workflow, architecture, data, security, privacy, operations, cost, deployment, or acceptance criteria.
+6. Do not repeat questions already answered in the conversation, repository, or documentation.
+7. When the user is unsure, explain credible options, trade-offs, and a recommendation.
+8. Allow the user to delegate a decision to Claude. Record the selected recommendation, evidence, assumptions, and consequences.
+9. Resolve contradictions explicitly rather than silently choosing an interpretation.
+10. Continue until all material gaps are resolved, explicitly assumed, deliberately deferred, or identified as blocking decisions.
+
+Requirements are ready for implementation planning only when:
+
+- the ultimate objective and measurable success criteria are clear
+- applicable users, actors, stakeholders, journeys, workflows, and responsibilities are defined
+- approved scope, priorities, non-goals, release boundaries, and mandatory constraints are clear
+- functional requirements and applicable non-functional requirements are testable
+- applicable data, security, privacy, integration, operational, hardware, AI, deployment, support, and lifecycle concerns are addressed or marked non-applicable
+- material edge cases, misuse cases, failure modes, and recovery expectations are defined
+- acceptance criteria and validation evidence are measurable
+- remaining unknowns are classified as blocking decisions, explicit assumptions, evidence gaps, or deferred items
+
+Before planning, present a consolidated requirements baseline containing:
+
+- ultimate objective and success measures
+- users, actors, and end-to-end journeys
+- approved scope and non-goals
+- functional and non-functional requirements
+- operating model and failure handling where applicable
+- material assumptions and evidence gaps
+- recommended requirement or scope changes
+- resolved decisions and unresolved blockers
+- measurable acceptance criteria
+
+Ask the user to confirm or correct this baseline. Do not begin implementation planning until the user confirms it or explicitly delegates confirmation.
+
+After confirmation:
+
+- update `PROJECT_BRIEF.md` and the authoritative requirements documentation
+- record decisions, risks, assumptions, TODOs, and deferred actions
+- create the implementation plan and independently verifiable milestones
+- identify the first milestone, validation methods, blockers, and next action
+- stop before coding unless implementation is separately requested
+
+## 4. Human and Operational Workflow
 
 When humans use, operate, review, administer, support, supervise, or perform field work, assess the complete operating model, including where applicable:
 
@@ -72,16 +122,17 @@ When humans use, operate, review, administer, support, supervise, or perform fie
 
 Model end-to-end workflows, state transitions, ownership changes, exceptions, and failure recovery. Do not design only happy-path screens. Do not introduce operational mechanisms unless the project needs them.
 
-## 4. Planning and Execution Discipline
+## 5. Planning and Execution Discipline
 
 Before material implementation:
 
-1. Read project instructions and current durable documentation.
-2. Inspect relevant code and existing behavior.
-3. Identify the current milestone and intended outcome.
-4. Define acceptance criteria and validation methods.
-5. Identify dependencies, risks, assumptions, affected components, owners, and blockers.
-6. Prepare or update the implementation plan.
+1. Confirm the requirements baseline.
+2. Read project instructions and current durable documentation.
+3. Inspect relevant code and existing behavior.
+4. Identify the current milestone and intended outcome.
+5. Define acceptance criteria and validation methods.
+6. Identify dependencies, risks, assumptions, affected components, owners, and blockers.
+7. Prepare or update the implementation plan.
 
 Break large work into independently implementable and verifiable milestones.
 
@@ -98,7 +149,7 @@ For each milestone:
 
 Do not silently abandon the existing plan when a new request arrives. Explicitly incorporate, defer, reject, or replace previous direction and record the effect on pending work.
 
-## 5. Durable Project Documentation
+## 6. Durable Project Documentation
 
 Treat repository documentation as durable project memory. Chat history must not be the only place important context, decisions, tasks, validation, or deferred actions exist.
 
@@ -148,7 +199,7 @@ For production systems, document deployment, rollback, monitoring, alerting, inc
 
 Do not create empty documentation for appearance. Avoid duplicate or conflicting sources of truth.
 
-## 6. Context Retention and Drift Control
+## 7. Context Retention and Drift Control
 
 At the beginning of each significant task or session:
 
@@ -164,7 +215,7 @@ Before `/compact`, ending a long session, or handing work to another session, pe
 
 Never mark work complete merely because code was written.
 
-## 7. File and Folder Structure
+## 8. File and Folder Structure
 
 Maintain a structure appropriate to the language, framework, architecture, deployment model, and ecosystem.
 
@@ -174,7 +225,7 @@ Avoid arbitrary nesting, oversized generic utility folders, duplicate implementa
 
 Before a substantial structural change, inspect the current organization, identify the problem, compare alternatives, explain trade-offs, preserve useful conventions, and update architecture documentation.
 
-## 8. AI Panel and Independent Review
+## 9. AI Panel and Independent Review
 
 Use independent review perspectives when they materially improve correctness, challenge assumptions, isolate context, or reduce risk.
 
@@ -199,7 +250,7 @@ Every Critical and High finding must be independently challenged before it becom
 
 After remediation, rerun affected checks, verify resolution, update documentation, and continue only after the milestone meets acceptance criteria.
 
-## 9. Model Selection
+## 10. Model Selection
 
 Choose models based on task difficulty, risk, privacy, cost, latency, and reasoning quality. Do not automatically use the strongest model for every task.
 
@@ -215,7 +266,7 @@ Escalate when confidence is low, evidence conflicts, risk is material, validatio
 
 Never reduce testing, review, or safety because a cheaper model was selected.
 
-## 10. Validation and Evidence
+## 11. Validation and Evidence
 
 Select validation according to the change, including where applicable:
 
@@ -232,7 +283,7 @@ Select validation according to the change, including where applicable:
 
 Report what was actually validated and what remains unverified. Do not claim success without evidence from inspection, execution, tests, or another appropriate method.
 
-## 11. Definition of Done
+## 12. Definition of Done
 
 Work is complete only when:
 
@@ -247,7 +298,7 @@ Work is complete only when:
 - operational readiness is addressed when applicable
 - the next action is clear
 
-## 12. Full-Spectrum Validation Mode
+## 13. Full-Spectrum Validation Mode
 
 Run maximum-depth validation at project inception or redefinition, major milestones, significant architecture or operating-model changes, repeated systemic failures, production readiness, major releases, or explicit request.
 
