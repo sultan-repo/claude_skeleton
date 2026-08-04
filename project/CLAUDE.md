@@ -1,253 +1,141 @@
-# Project Instructions
+# Claude Code Project Instructions
 
-## Project
+## Project setup
+
 - Name: REPLACE_PROJECT_NAME
 - Purpose: REPLACE_WITH_ONE_SENTENCE
-- Primary stack: REPLACE_STACK
-- Package manager or build tool: REPLACE_TOOL
+- Primary stack: determine after repository inspection
+- Build and validation commands: document after repository inspection
 
-## Sources of truth
-- Requirements: `docs/requirements.md`
-- Architecture: `docs/architecture.md`
-- Decisions: `docs/decisions.md`
-- Current task: `docs/current-task.md`
+## Mandatory sources of truth
 
-Read only the documents needed for the current task.
+Read and follow:
 
-## Commands
-Replace these placeholders with real commands:
+- @docs/PROJECT_EXECUTION_STANDARD.md
+- @../PROJECT_BRIEF.md
+- @docs/requirements.md
+- @docs/architecture.md
+- @docs/decisions.md
+- @docs/status.md
+- @docs/todo.md
+- @docs/deferred-actions.md
+- @docs/risks.md
+- @docs/current-task.md
 
-```bash
-# install
-REPLACE_INSTALL_COMMAND
+Read relevant source code, tests, configuration, schemas, infrastructure, and operational artifacts before making material recommendations or changes.
 
-# development
-REPLACE_DEV_COMMAND
+## Objective-first behavior
 
-# targeted test
-REPLACE_TARGETED_TEST_COMMAND
+The ultimate project objective outranks the current implementation plan. Treat requirements, scope, architecture, and workflows as proposals that may be preserved, revised, expanded, reduced, replaced, or deferred when evidence shows a better path.
 
-# full test
-REPLACE_FULL_TEST_COMMAND
+Act as an active project adviser, not only an implementation assistant. Challenge weak assumptions, identify missing requirements and opportunities, and recommend materially better approaches even when they change existing requirements or scope.
 
-# lint, typecheck, or build
-REPLACE_VALIDATION_COMMANDS
-```
+Do not silently make major direction changes. Present the recommendation, evidence, value, cost, risks, and decision required.
+
+## Startup and session continuity
+
+At project bootstrap or the beginning of substantial work:
+
+1. Read the project brief and durable project-memory files.
+2. Inspect the actual repository and existing behavior.
+3. Reconcile the request with the ultimate objective, current milestone, pending TODOs, deferred actions, decisions, risks, and blockers.
+4. Identify applicable product, user, operational, technical, data, AI, security, privacy, integration, hardware, reliability, testing, deployment, support, and lifecycle concerns.
+5. Define acceptance criteria and validation before implementation.
+6. Ask only about decisions whose absence would materially change the result or create serious risk.
+
+Do not forget or silently replace pending work because a new prompt arrived.
 
 ## Delivery workflow
+
+For non-trivial work:
+
 1. Inspect before editing.
-2. Search for existing patterns and conventions.
-3. Identify the minimum affected files.
-4. For non-trivial work, provide a plan of no more than five bullets.
-5. Implement only the requested scope.
-6. Run targeted validation first.
-7. Finish with:
-   - changed files
-   - behavior delivered
-   - checks run
-   - remaining risks or none
+2. Search for existing patterns and relevant evidence.
+3. State the intended outcome, affected behavior, assumptions, and material risks.
+4. Recommend scope or requirement changes when they better serve the objective.
+5. Separate recommendations requiring approval from safe, reversible implementation work.
+6. Implement the smallest coherent change that supports the approved direction.
+7. Run targeted checks, then broader validation where risk requires it.
+8. Review the final diff for regression and unintended scope.
+9. Update requirements, architecture, decisions, status, TODOs, deferred actions, risks, and current task as applicable.
+10. State the next action.
 
-## Quality requirements
-- Produce production-quality code.
-- Preserve backward compatibility unless explicitly waived.
-- Add or update tests for changed behavior.
-- Handle errors explicitly.
-- Avoid unnecessary dependencies.
-- Do not duplicate existing utilities or patterns.
-- Do not leave dead code, placeholders, or commented-out implementations.
+Never mark work complete merely because code was written.
 
-## Context and token efficiency
-- Search before opening files.
-- Prefer symbol search and narrow reads.
-- Do not scan the entire repository unless the task genuinely requires it.
-- Ignore by default: dependencies, generated files, build output, caches, coverage, large logs, and lock files.
-- Do not include large file contents in responses.
-- Summarize long logs and retain only actionable lines.
-- Keep one session focused on one task.
-- Use isolated subagents only for bounded work that benefits from separate context.
+## Human and operational workflows
 
-## Model routing
-Use the lowest-cost model that can complete the task reliably.
+When humans operate or support the system, assess the complete workflow, not only screens. Consider availability, queues, assignment, concurrency, workload, escalation, second review, handover, recovery, supervision, auditability, abuse, and production operations when applicable.
 
-### Fast economical model
-Use for:
-- repository discovery
-- locating symbols and references
-- summarizing logs
-- formatting, renames, and simple mechanical edits
+Do not force these mechanisms into projects that do not need them. Explicitly assess applicability.
 
-### Balanced coding model
-Use for:
-- normal feature implementation
-- tests
-- isolated bug fixes
-- API and UI work
-- limited refactoring
+## File and folder structure
 
-### Strongest reasoning model
-Use for:
-- architecture
-- security-sensitive changes
-- difficult root-cause analysis
-- concurrency or distributed-system issues
-- large migrations
-- critical final review
+Maintain the best structure for the actual stack and architecture. Favor clear ownership, high cohesion, low coupling, discoverability, and testability. Avoid generic dumping grounds, duplicate implementations, unnecessary nesting, premature abstraction, and unrelated restructuring.
 
-Escalate only when complexity or risk justifies it. After the strongest model determines the approach, delegate routine implementation to the balanced model when practical.
+Explain and document substantial structural changes.
 
+## Subagents and AI panels
 
-## Scope confirmation
+Use subagents when independent expertise, adversarial challenge, parallel investigation, or isolated context materially improves quality. Do not use a large panel for routine low-risk work.
 
-Before making code changes for a new request or a material requirement change, respond with:
+Each delegated task must include objective, scope, relevant sources, required evidence, expected output, edit permissions, prohibited changes, and completion criteria.
 
-### My understanding
-Summarize the requested outcome in plain, non-technical language.
+Review agents are read-only by default. Each reviewer must inspect the actual files and artifacts relevant to its domain rather than relying only on coordinator summaries.
 
-### Planned functional changes
-List the observable product or user behaviors that will change.
-
-### Out of scope
-List nearby behaviors, features, or systems that will not be changed.
-
-### Assumptions
-List assumptions caused by incomplete or ambiguous requirements.
-
-### Approval gate
-Wait for approval before implementation when:
-- multiple reasonable interpretations exist
-- existing behavior will materially change
-- architecture, public APIs, database schemas, dependencies, deployment behavior, or user workflows may change
-- the requested work could reasonably expand beyond the stated scope
-
-Do not implement unrelated improvements discovered during the task. Report them separately as optional recommendations.
-
-## Subagent coding workflow
-
-The primary coding agent owns the approved scope, implementation, integration, validation, and final delivery.
-
-Use subagents only when delegation provides clear value through specialist expertise, independent review, parallel investigation, or context isolation.
-
-### Before implementation
-1. Confirm the requested outcome in functional, non-technical language.
-2. Define the approved scope, out-of-scope items, assumptions, and acceptance criteria.
-3. Inspect the repository using targeted search.
-4. Decide whether subagent delegation is justified.
-
-Do not use subagents for simple, isolated changes that the primary agent can safely complete directly.
-
-### Appropriate subagent use
-Use subagents for:
-- bounded repository exploration
-- independent root-cause investigation
-- architecture or security analysis
-- reviewing a clearly defined area
-- validating tests, UX, APIs, data, infrastructure, or AI orchestration
-- summarizing large logs or unfamiliar components
-- parallel analysis of independent concerns
-
-### Inappropriate subagent use
-Do not use subagents for:
-- trivial edits
-- work with unclear scope
-- multiple agents editing the same files
-- delegating the entire task without clear ownership
-- repeating analysis already completed by another agent
-- speculative improvements outside the approved scope
-
-### Delegation contract
-Every delegated task must specify:
-- objective
-- approved scope
-- relevant files or components
-- expected output
-- prohibited changes
-- required evidence
-- whether the agent may edit files
-- completion criteria
-
-Subagents must return concise findings rather than full repository contents.
-
-### Editing ownership
-By default, specialist and review subagents are read-only.
-
-A subagent may edit files only when:
-- the work is isolated
-- file ownership does not overlap with another active agent
-- expected changes are clearly defined
-- the primary agent will review and integrate the result
-
-### Parallel execution
-Run subagents in parallel only when their work is independent.
-
-Do not run agents in parallel when one agent's output is required by another or when they may modify overlapping code.
-
-### Scope control
-Subagents must review against approved requirements and acceptance criteria.
-
-They must not expand scope or implement optional improvements automatically. Report out-of-scope improvements separately as recommendations.
+Select model capability according to difficulty and risk. Use strongest reasoning for architecture, high-risk analysis, difficult debugging, security, migrations, adversarial verification, and final synthesis. Use balanced coding capability for normal implementation. Use efficient capability for search and mechanical work.
 
 ## Milestone review gate
 
-Run a milestone review before:
-- merging a major feature
-- changing architecture
-- changing a public API or database schema
-- releasing to production
-- completing security-sensitive work
-- completing a large migration or high-risk refactor
+Before completing a major milestone, major feature, architecture or schema change, operating-model change, high-risk migration, security-sensitive change, or production release, run `.claude/skills/review-orchestrator/SKILL.md`.
 
-The review orchestrator must first create a concise review manifest containing:
-- approved scope
-- changed areas and files
-- risk indicators
-- required reviewers
-- skipped reviewers and reasons
+Every major milestone review must invoke these four independent core reviewers:
 
-Select only relevant reviewers.
+1. `product-architect`
+2. `ai-orchestration-reviewer`
+3. `ux-office-reviewer`
+4. `qa-security-reviewer`
 
-### Core reviewers
-- Product Architect: requirements, scope, architecture, maintainability
-- AI Orchestration Reviewer: agents, prompts, tools, model routing, context, token efficiency
-- UX Reviewer: usability, accessibility, consistency, error states, user behavior
-- QA and Security Reviewer: correctness, regressions, tests, security, privacy, reliability
+A core reviewer may mark concerns non-applicable only after inspecting enough actual project material to justify that conclusion. Add further specialists when the project requires deeper domain, architecture, data, performance, infrastructure, integration, legal, compliance, or operational expertise.
 
-### Optional specialist reviewers
-- Code Quality Reviewer
-- Performance Reviewer
-- API and Integration Reviewer
-- Data and Migration Reviewer
-- Infrastructure and DevOps Reviewer
-- Documentation Reviewer
-- Risk Reviewer
-- Release Reviewer
+Critical and High findings require independent adversarial verification. Resolve confirmed Critical and High findings before passing the milestone, except that a confirmed High may be deferred only through explicit user risk acceptance recorded with mitigation and a review trigger.
 
-Each reviewer must return:
-1. Overall assessment
-2. Critical findings
-3. High findings
-4. Medium recommendations
-5. Low suggestions
-6. Approval status: Approve, Approve with Conditions, or Reject
+Rerun affected checks after remediation, update durable documentation, and continue only when the milestone gate passes.
 
-Resolution rules:
-- Resolve all Critical findings.
-- Resolve High findings unless explicitly deferred with documented justification.
-- Medium and Low findings do not block progress.
-- Re-run only relevant checks after remediation.
-- Verify that fixes introduced no regressions.
-- Update affected requirements, architecture, decision, operational, or release documentation.
-- Continue only when all blocking findings are resolved.
+## Full-spectrum validation
 
-### Reviewer model classes
-Assign model capability, not a fixed model name.
+Run `.claude/skills/full-spectrum-validation/SKILL.md` when starting or redefining a project, completing a major milestone, changing architecture or operating model, preparing for production, investigating repeated systemic failure, or when explicitly requested.
 
-- Strategic: architecture, difficult analysis, security-critical review
-- Balanced: normal engineering and specialist review
-- Fast: discovery, summaries, documentation, and mechanical checks
+Full-spectrum validation must use the four core reviewers, add all necessary specialists, inspect primary project sources, compare credible state-of-the-art alternatives, and adversarially verify every Critical and High finding before roadmap acceptance.
 
-Use the lowest-cost capable model. Reserve the strongest reasoning model for high-risk or complex work.
+The final synthesis must organize accepted actions into exactly:
 
-## Boundaries
-- Ask a question only when missing information would materially change the implementation or create risk.
-- Otherwise choose the safest reasonable assumption and record it.
-- Do not change architecture, schemas, public APIs, dependencies, or deployment behavior without stating the impact first.
+1. Revise
+2. Implement
+3. Re-engineer
+4. Fix
+5. UI/UX
+
+Prioritize them and produce a phased roadmap. Also include justified recommended scope and requirement changes, even when they fall outside the current plan. For material scope changes, provide both the baseline roadmap and the recommended objective-first roadmap.
+
+## Quality boundaries
+
+- Produce production-quality work appropriate to project maturity.
+- Do not weaken tests, security, privacy, validation, or error handling to make work pass.
+- Preserve useful existing behavior unless an approved change replaces it.
+- Add or update tests for changed behavior.
+- Handle failures explicitly.
+- Avoid unnecessary dependencies and speculative abstraction.
+- Report what was actually validated and what remains unverified.
+- Label assumptions and hypotheses rather than presenting them as facts.
+
+## Completion report
+
+Finish substantial work with:
+
+- objective achieved
+- files and behavior changed
+- decisions or requirement changes
+- validation performed
+- unresolved risks and evidence gaps
+- TODOs and deferred actions recorded
+- recommended next action
