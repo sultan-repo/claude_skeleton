@@ -1,6 +1,10 @@
 # Project Brief
 
-Edit this file for each project. Describe the desired outcome, not a predetermined implementation, unless a constraint is genuinely mandatory.
+This file is optional before the first Claude Code session.
+
+You may fill it in manually, or run `/start-project`, paste rough requirements in the conversation, and let Claude populate and refine it through the requirements interview.
+
+Describe the desired outcome, not a predetermined implementation, unless a constraint is genuinely mandatory.
 
 ## Ultimate objective
 

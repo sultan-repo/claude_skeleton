@@ -1,21 +1,61 @@
 # Claude Code Reusable Project Skeleton
 
-A project-agnostic Claude Code template for objective-first planning, durable project memory, dynamic multi-agent review, evidence-based validation, and milestone delivery.
+A project-agnostic Claude Code template for turning rough requirements into a validated project definition, implementation plan, durable project memory, dynamic multi-agent review, and milestone delivery.
 
-The repository itself is the template. Create a new repository from it, edit one file, and start Claude Code at the root. There is no nested `project/` directory to copy.
+The repository itself is the template. Create a repository from it and start Claude Code at the root. There is no nested template directory to copy.
 
-## Start a new project
+## Simplest way to start
+
+You do not need to complete every document before using the template.
 
 1. Use this repository as a GitHub template or clone it.
-2. Edit `PROJECT_BRIEF.md`.
-3. Start Claude Code in the repository root.
-4. Run:
+2. Start Claude Code in the repository root.
+3. Run:
 
 ```text
-/bootstrap-project
+/start-project
 ```
 
-The bootstrap workflow inspects the actual repository, challenges weak assumptions, establishes only useful durable documentation, and proposes the first validated milestone without implementing product features.
+4. Paste your rough requirements, idea, notes, links, constraints, or existing problem statement.
+
+Example:
+
+```text
+/start-project
+
+Here are my initial requirements:
+
+[Paste the project idea or requirements here.]
+
+Read the repository first. Ask me as many focused questions as needed to make
+these requirements complete, consistent, and ready for implementation planning.
+Do not start coding yet.
+```
+
+Claude will then:
+
+1. Read the repository, existing code, and documentation.
+2. Summarize what it understands and identify contradictions or important gaps.
+3. Interview you through as many question rounds as necessary.
+4. Explain options and recommend decisions when you are unsure.
+5. Consolidate the requirements and ask you to confirm the final baseline.
+6. Update the durable project documents.
+7. Create the implementation plan and first verifiable milestone.
+8. Stop before coding and show the exact next action.
+
+Questions are adaptive, not a fixed questionnaire. Claude should ask only what is relevant to the project, but it should not stop while material uncertainty remains.
+
+## Optional brief-first workflow
+
+You may instead edit `PROJECT_BRIEF.md` before starting. This is useful when you already have a structured idea or want the initial context stored before the first Claude session.
+
+After editing it, run:
+
+```text
+/start-project
+```
+
+Claude will still inspect the repository and ask any questions needed to complete the requirements.
 
 ## Add to an existing project
 
@@ -26,6 +66,27 @@ Use a separate branch, then run:
 ```
 
 The installer never overwrites existing framework files. When conflicts exist, it places the incoming framework under `.claude-skeleton-incoming/` for deliberate reconciliation.
+
+After installation, start Claude Code in the existing project and run `/start-project`. Supply the requested change or broader project requirements. Claude will inspect the current implementation before interviewing you.
+
+## Requirements interview behavior
+
+The `/start-project` workflow continues until the requirements are decision-ready.
+
+It covers only applicable areas, such as:
+
+- ultimate objective and measurable success
+- users, stakeholders, roles, and journeys
+- scope, priorities, constraints, and non-goals
+- functional behavior, edge cases, misuse, and failure recovery
+- human operations, assignment, concurrency, supervision, and auditability
+- data, integrations, security, privacy, compliance, hardware, AI, and automation
+- performance, reliability, scalability, cost, deployment, support, and lifecycle
+- acceptance criteria and validation evidence
+
+Claude should not repeat answered questions or dump a giant generic questionnaire. It asks focused questions in small batches, prioritizes high-impact decisions, records assumptions, and resolves contradictions explicitly.
+
+Planning begins only after you confirm the consolidated requirements baseline.
 
 ## Philosophy
 
@@ -52,7 +113,7 @@ The review panel has no fixed names or maximum. Routine work uses the smallest c
 
 | Command | Purpose |
 |---|---|
-| `/bootstrap-project` | Establish or refresh the project foundation |
+| `/start-project` | Interview the user, confirm requirements, and create the implementation plan |
 | `/plan-milestone` | Define a verifiable milestone and review strategy |
 | `/review-milestone` | Run a dynamic independent panel and enforce the gate |
 | `/full-spectrum-validation` | Challenge the whole project and produce a prioritized roadmap |
@@ -62,8 +123,8 @@ The review panel has no fixed names or maximum. Routine work uses the smallest c
 
 The default documents are:
 
-- `PROJECT_BRIEF.md`: user-edited objective and context
-- `docs/requirements.md`: behavior, actors, operating model, acceptance criteria, and open decisions
+- `PROJECT_BRIEF.md`: objective, context, constraints, and confirmed project definition
+- `docs/requirements.md`: behavior, actors, operating model, acceptance criteria, assumptions, and open decisions
 - `docs/architecture.md`: boundaries, components, data, integrations, deployment, operations, and trade-offs
 - `docs/plan.md`: milestones, tasks, dependencies, validation, blockers, and plan changes
 - `docs/status.md`: concise current snapshot and next action
@@ -92,7 +153,7 @@ Actions receive P0-P3 priority and a phased roadmap. Material scope changes incl
 
 `.claude/settings.json` contains only conservative shared deny rules for common secrets. It deliberately avoids broad command allowances and active hooks because safe commands, build tools, and formatting differ by project.
 
-After bootstrap, review permissions with `/permissions`. Add deterministic hooks only after the stack and commands are known. Keep personal settings in `.claude/settings.local.json` or user-level Claude configuration.
+After project setup, review permissions with `/permissions`. Add deterministic hooks only after the stack and commands are known. Keep personal settings in `.claude/settings.local.json` or user-level Claude configuration.
 
 ## Context hygiene
 
@@ -114,7 +175,7 @@ CI runs the same check. For behavioral testing, follow `docs/TEMPLATE_ACCEPTANCE
 
 ## Why this structure
 
-Anthropic recommends a concise `CLAUDE.md`, modular rules for persistent instructions, skills for repeatable procedures, project settings under `.claude/settings.json`, and custom subagents only when a repeated specialist configuration provides value. This template follows that separation so routine sessions remain lean while deep workflows are available on demand.
+The template keeps always-loaded instructions concise, persistent rules modular, workflow procedures in skills, shared settings under `.claude/settings.json`, and custom agents limited to reusable contracts. Routine sessions remain lean while deep planning and validation remain available when needed.
 
 ## License
 

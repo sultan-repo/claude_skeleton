@@ -16,12 +16,13 @@ required=(
   .claude/settings.json
   .claude/agents/specialist-reviewer.md
   .claude/agents/adversarial-verifier.md
-  .claude/skills/bootstrap-project/SKILL.md
+  .claude/skills/start-project/SKILL.md
   .claude/skills/plan-milestone/SKILL.md
   .claude/skills/review-milestone/SKILL.md
   .claude/skills/full-spectrum-validation/SKILL.md
   .claude/skills/finish-milestone/SKILL.md
   docs/PROJECT_EXECUTION_STANDARD.md
+  docs/TEMPLATE_ACCEPTANCE_TEST.md
   docs/requirements.md
   docs/architecture.md
   docs/plan.md
@@ -55,8 +56,17 @@ done
 
 [[ "$(wc -l < CLAUDE.md | tr -d ' ')" -le 200 ]] || fail "CLAUDE.md exceeds 200 lines"
 
+grep -q '/start-project' README.md || fail "README missing simplified /start-project workflow"
+grep -q 'as many.*question' .claude/skills/start-project/SKILL.md || fail "Start workflow does not permit adaptive question rounds"
+grep -q 'requirements baseline' .claude/skills/start-project/SKILL.md || fail "Start workflow missing requirements confirmation gate"
+grep -q 'Do not begin implementation planning' .claude/skills/start-project/SKILL.md || fail "Start workflow does not block premature planning"
+
 if grep -R -nE 'project/CLAUDE\.md|path-to-skeleton/project|@\.\./PROJECT_BRIEF' README.md CLAUDE.md docs .claude 2>/dev/null; then
   fail "Legacy nested-template reference found"
+fi
+
+if grep -R -nE '/bootstrap-project|bootstrap-project/SKILL\.md' README.md CLAUDE.md docs .claude scripts 2>/dev/null; then
+  fail "Legacy bootstrap entry point found"
 fi
 
 if grep -R -nE 'must invoke these four|product-architect|ux-office-reviewer|qa-security-reviewer|ai-orchestration-reviewer' CLAUDE.md docs .claude 2>/dev/null; then
@@ -72,5 +82,6 @@ trap 'rm -rf "$tmpdir"' EXIT
 mkdir -p "$tmpdir/project/.git"
 ./scripts/install-into-project.sh "$tmpdir/project" >/dev/null
 [[ -f "$tmpdir/project/CLAUDE.md" && -f "$tmpdir/project/FRAMEWORK_VERSION" ]] || fail "Installer smoke test failed"
+[[ -f "$tmpdir/project/.claude/skills/start-project/SKILL.md" ]] || fail "Installer did not copy start-project skill"
 
 printf 'Template validation passed.\n'
