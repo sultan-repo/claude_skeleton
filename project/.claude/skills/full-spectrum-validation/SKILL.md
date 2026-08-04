@@ -20,9 +20,18 @@ State the ultimate objective, success criteria, constraints, assumptions, curren
 
 ## 2. Build the review panel
 
-Select the smallest complete set of independent reviewers needed for the project. Include relevant product, domain, architecture, software, data, AI, security, privacy, reliability, performance, UX, human operations, QA, integration, infrastructure, compliance, and feasibility perspectives.
+Always invoke the four core reviewers:
 
-Assign each reviewer a bounded domain and the primary files or artifacts it must inspect. Reviewers must inspect actual sources and must not rely only on coordinator summaries.
+1. `product-architect`
+2. `ai-orchestration-reviewer`
+3. `ux-office-reviewer`
+4. `qa-security-reviewer`
+
+Each core reviewer must inspect actual project sources. A reviewer may mark concerns non-applicable only after inspecting enough evidence to justify that conclusion.
+
+Add the smallest complete set of independent specialists needed for the project. Include relevant domain, software architecture, data, reliability, performance, integration, infrastructure, compliance, implementation-feasibility, or other perspectives when the core panel does not provide sufficient depth.
+
+Assign every reviewer a bounded domain and the primary files or artifacts it must inspect. Reviewers must not rely only on coordinator summaries.
 
 Use the strongest reasoning capability for complex or high-risk review and synthesis. Use balanced or efficient capability only where reliable.
 
@@ -108,4 +117,4 @@ Identify:
 
 Update requirements, architecture, decisions, status, TODOs, deferred actions, and risks to reflect accepted conclusions and unresolved gaps.
 
-Validation passes only when relevant dimensions were assessed or marked non-applicable, primary sources were inspected, serious findings were adversarially verified, contradictions were resolved, the five output buckets and prioritized roadmap were produced, and durable documentation was updated.
+Validation passes only when relevant dimensions were assessed or marked non-applicable, all core reviewers inspected primary sources, additional necessary specialists were included, serious findings were adversarially verified, contradictions were resolved, the five output buckets and prioritized roadmap were produced, and durable documentation was updated.
