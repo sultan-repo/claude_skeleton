@@ -94,6 +94,14 @@ Actions receive P0-P3 priority and a phased roadmap. Material scope changes incl
 
 After bootstrap, review permissions with `/permissions`. Add deterministic hooks only after the stack and commands are known. Keep personal settings in `.claude/settings.local.json` or user-level Claude configuration.
 
+## Context hygiene
+
+Before using `/compact`, ending a long session, or switching sessions, Claude records decisions, status, validation, risks, TODOs, deferred work, and the next action. On resume, it rereads the plan and status. This keeps compaction useful without turning chat history into the project database.
+
+## Framework version
+
+`FRAMEWORK_VERSION` identifies the installed skeleton version. Keep it when copying the framework into projects so future upgrades can compare versions deliberately.
+
 ## Validate the skeleton
 
 Run:

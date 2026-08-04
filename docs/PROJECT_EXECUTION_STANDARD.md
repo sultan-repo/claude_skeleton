@@ -160,6 +160,8 @@ When a request conflicts with an existing decision, plan, or objective, surface 
 
 At task completion, update task and milestone status, decisions, assumptions, TODOs, deferred actions, limitations, risks, validation state, and next action.
 
+Before `/compact`, ending a long session, or handing work to another session, persist the current state and next action. After compaction or resume, reread the current plan and status before continuing.
+
 Never mark work complete merely because code was written.
 
 ## 7. File and Folder Structure
@@ -181,6 +183,8 @@ Typical triggers include ambiguous requirements, major architecture, cross-funct
 Do not use a large panel for routine low-risk work. Select the smallest complete panel for the actual task, but impose no fixed roster or maximum. Add every specialist perspective needed for confidence.
 
 Claude may use built-in agents, multiple dynamically assigned generic reviewers, temporary session agents, recurring project agents, or agent teams when available and justified. Existing agent files are reusable templates, not a limit on the roles Claude may create or invoke.
+
+Parallel analysis may run concurrently when independent. Parallel editing requires isolated file ownership or worktree isolation; agents must not modify overlapping files concurrently.
 
 Reviewers must:
 
