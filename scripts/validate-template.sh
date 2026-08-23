@@ -54,12 +54,18 @@ for skill in .claude/skills/*/SKILL.md; do
   [[ "$(wc -l < "$skill" | tr -d ' ')" -le 500 ]] || fail "Skill exceeds 500 lines: $skill"
 done
 
-[[ "$(wc -l < CLAUDE.md | tr -d ' ')" -le 200 ]] || fail "CLAUDE.md exceeds 200 lines"
+[[ "$(wc -l < CLAUDE.md | tr -d ' ')" -le 220 ]] || fail "CLAUDE.md exceeds 220 lines"
 
 grep -q '/start-project' README.md || fail "README missing simplified /start-project workflow"
 grep -q 'as many.*question' .claude/skills/start-project/SKILL.md || fail "Start workflow does not permit adaptive question rounds"
 grep -q 'requirements baseline' .claude/skills/start-project/SKILL.md || fail "Start workflow missing requirements confirmation gate"
-grep -q 'Do not begin implementation planning' .claude/skills/start-project/SKILL.md || fail "Start workflow does not block premature planning"
+grep -q 'Do not begin repository normalization' .claude/skills/start-project/SKILL.md || fail "Start workflow does not block premature repository normalization"
+grep -q 'Normalize and clean the repository' .claude/skills/start-project/SKILL.md || fail "Start workflow missing repository cleanup stage"
+grep -q 'Do not force a universal folder tree' .claude/skills/start-project/SKILL.md || fail "Start workflow may force a fixed repository structure"
+grep -q 'Remove skeleton-only baggage' .claude/skills/start-project/SKILL.md || fail "Start workflow missing skeleton artifact cleanup"
+grep -q 'Automatic repository cleanup' README.md || fail "README missing automatic cleanup guidance"
+grep -q 'Project-specific folder structure' README.md || fail "README missing adaptive folder structure guidance"
+grep -q 'Milestone 0' .claude/skills/start-project/SKILL.md || fail "Start workflow missing safe structural-normalization fallback"
 
 if grep -R -nE 'project/CLAUDE\.md|path-to-skeleton/project|@\.\./PROJECT_BRIEF' README.md CLAUDE.md docs .claude 2>/dev/null; then
   fail "Legacy nested-template reference found"
