@@ -5,7 +5,7 @@ This repository uses an objective-first, evidence-based delivery framework.
 ## First principles
 
 - The project's ultimate objective outranks the current implementation plan.
-- Treat requirements, scope, architecture, workflows, and implementation as proposals that may be preserved, revised, expanded, reduced, replaced, or deferred when evidence supports a better path.
+- Treat requirements, scope, architecture, workflows, implementation, and repository structure as proposals that may be preserved, revised, expanded, reduced, replaced, or deferred when evidence supports a better path.
 - Challenge weak assumptions. Distinguish facts, assumptions, recommendations, risks, and unresolved questions.
 - Prefer the simplest design that reliably achieves the objective. Technical elegance alone is not justification.
 - Do not silently make major direction changes. Present the recommendation, evidence, value, cost, risks, and decision required.
@@ -24,12 +24,15 @@ Before implementation planning:
 4. Do not repeat answered questions. Ask small coherent batches, prioritize high-impact decisions, and explain options and recommendations when the user is unsure.
 5. Continue until material unknowns are resolved, explicitly assumed, deliberately deferred, or identified as blocking decisions.
 6. Present the consolidated requirements baseline, recommended changes, assumptions, and unresolved items for user confirmation.
-7. Begin implementation planning only after the user confirms or corrects the requirements baseline.
-8. Update durable documentation, create the milestone plan, and stop before coding unless implementation is separately requested.
+7. After confirmation, normalize the repository into the best structure for the actual project. Remove skeleton-only baggage, adapt retained framework files, rewrite project-facing documentation, and create or reorganize folders according to the selected stack, architecture, deployment model, size, and ecosystem conventions.
+8. Do not force a preset folder tree. Preserve a good existing structure and restructure only when it creates clear project value.
+9. Validate structural cleanup, then create the milestone plan and stop before product coding unless implementation is separately requested.
+
+Repository cleanup may perform non-feature setup work after requirements confirmation. If moving existing code or configuration is materially risky, execute it as a focused Milestone 0 with validation before feature implementation.
 
 ## Before significant work
 
-1. Read `PROJECT_BRIEF.md`, `docs/status.md`, `docs/plan.md`, relevant decisions, risks, TODOs, and deferred actions.
+1. Read `PROJECT_BRIEF.md`, `docs/status.md`, `docs/plan.md`, and relevant decisions, risks, TODOs, and deferred actions when present.
 2. Inspect the actual code, tests, configuration, schemas, infrastructure, UI, and existing behavior relevant to the task.
 3. Reconcile the request with the ultimate objective, current milestone, pending work, and prior decisions.
 4. Define measurable acceptance criteria and validation before implementation.
@@ -49,6 +52,15 @@ After repository inspection, maintain verified install, development, targeted-te
 - Failed required validation blocks dependent work until fixed, the approach changes and passes, or an appropriate risk is explicitly accepted by the user.
 - Review the final diff for regressions, unintended scope, and incomplete documentation.
 - Never mark work complete merely because code was written.
+
+## Repository structure discipline
+
+- Derive structure from the actual project, not from this skeleton or personal preference.
+- Prefer framework and ecosystem conventions unless the project has a justified alternative.
+- Promote clear ownership, high cohesion, low coupling, discoverability, testability, and simple build/deployment paths.
+- Avoid placeholder directories, generic dumping grounds, duplicate implementations, unnecessary nesting, premature abstraction, and unrelated refactoring.
+- Keep the repository free of obsolete skeleton-maintenance files after initialization unless they have an explicit continuing purpose.
+- Update imports, tests, build configuration, CI, deployment references, and documentation when files move.
 
 ## Dynamic agent and model orchestration
 
@@ -75,13 +87,13 @@ Keep authoritative project context in repository documentation, not only chat hi
 - `docs/deferred-actions.md`
 - `docs/risks.md`
 
-Create additional focused documents only when complexity justifies them. Avoid duplicate sources of truth and ceremonial files.
+Create additional focused documents only when complexity justifies them. Consolidate or remove empty ceremonial documents when they add no durable value. Avoid duplicate sources of truth.
 
 Before `/compact`, ending a long session, or handing work to another session, persist decisions, status, TODOs, risks, deferred actions, validation state, and next action. After compaction or resume, reread the current plan and status before continuing.
 
 ## Reusable workflows
 
-- `/start-project`: inspect the repository, interview the user, confirm requirements, and create the implementation plan without coding.
+- `/start-project`: inspect the repository, interview the user, confirm requirements, normalize and clean the repository, and create the implementation plan without product coding.
 - `/plan-milestone`: define a milestone, dependencies, acceptance criteria, validation, and review needs.
 - `/review-milestone`: run an independent, risk-based review panel and enforce the milestone gate.
 - `/full-spectrum-validation`: perform comprehensive objective-first validation and produce a prioritized roadmap.
